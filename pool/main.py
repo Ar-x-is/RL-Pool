@@ -18,7 +18,7 @@ def parser():
     parser.add_argument('--debug', action='store_true')
     parser.add_argument('--level-all', action='store_true')
     parser.add_argument('--level-x', type=int, default=0)
-    parser.add_argument('--seed', type=int, default=169)
+    parser.add_argument('--seed', type=int, default=73)
     parser.add_argument('--trace-file-prefix', type=str, default="traces/trace")
 
     return parser.parse_args()
@@ -33,13 +33,10 @@ if __name__ == "__main__":
     levels_passed = 0
     marks = 0
     
-    config.seed = args.seed
     events = {"closed" : False, "quit_to_main_menu" : False}
     stats = {"mean_tries" : 0, "total_simulation_time" : 0, "average_episode_time" : 0, "number_episodes_played" : 0}
     
     MARKS = [0.4]*3 + [0.6]*4 + [0.8]*3
-    
-    config.debug = args.debug
     
     if args.level_all:
         MAX_TRIES = list(range(30, 30 - 2*config.num_levels, -2))
@@ -83,7 +80,7 @@ if __name__ == "__main__":
 
                         if not args.no_render:
                             events = event.events()
-                        game.cue.cue_is_active(game, events, not args.no_render, debug=args.debug)
+                        game.cue.cue_is_active(game, events, not args.no_render, args.debug)
                         curr_tries += 1
 
             if game.is_game_over:
@@ -161,7 +158,7 @@ if __name__ == "__main__":
 
                     if not args.no_render:
                         events = event.events()
-                    game.cue.cue_is_active(game, events, not args.no_render, debug=args.debug)
+                    game.cue.cue_is_active(game, events, not args.no_render, args.debug)
                     curr_tries += 1
 
         if game.is_game_over:

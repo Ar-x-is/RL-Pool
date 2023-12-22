@@ -1,0 +1,10 @@
+By: Archit Swamy
+Here lies a detailed log of all I have attempted.
+
+Until mentioned otherwise, the agent is learning alone, without an opponent, in a setting with only solid balls. 
+
+>> 8:38 PM, 21 Dec 2023 
+My first approach is very basic and intuitive. The aim is simply for the agent to learn which ball-hole pair is the best shot to take.
+I generate a feature vector for each ball-hole pair which accounts for the following: "straightness" of the shot, distance between cue ball and solid, and if the path from the solid ball to the hole is obstructed.
+As for the action values, they are approximated as a linear function of the feature vector. 
+I use a gradient descent approach in order to find optimal weights that linearly approximate the value function. I utilise bootstrapping (TD(0) updates).

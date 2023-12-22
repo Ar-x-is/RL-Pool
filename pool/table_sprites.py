@@ -99,6 +99,7 @@ class TableColoring(pygame.sprite.Sprite):
                     start_x[player - 1] += config.ball_radius * 2 + config.target_ball_spacing
 
     def generate_top_left_label(self, game_state):
+        return
         # generates the top left label (which players turn is it and if he can move the ball)
         top_left_text = ""
         if game_state.can_move_white_ball:

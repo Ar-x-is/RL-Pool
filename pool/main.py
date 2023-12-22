@@ -168,16 +168,16 @@ if __name__ == "__main__":
                 print(f"Tries : {curr_tries}")
                 levels_passed += 1
                 print()
-        if curr_tries > MAX_TRIES:
-            print(f"Level {eps} failed")
-            print()
+        # if curr_tries > MAX_TRIES:
+        #     print(f"Level {eps} failed")
+        #     print()
 
         if args.generate_traces:
             fname = args.trace_file_prefix + f"{eps}" +".json"
             game.cue.save_trace_dict(fname)
-        if curr_tries > MAX_TRIES : 
-            print("Max tries reached, moving to the next level")
-            print()
+        # if curr_tries > MAX_TRIES : 
+        #     print("Max tries reached, moving to the next level")
+        #     print()
 
         time_elapsed = time.time() - start_time
         if args.generate_stats:
